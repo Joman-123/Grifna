@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f97316" />
+    <meta name="description" content="AI-Powered Smart Recipe Generator & Meal Planner. Personalized cooking recommendations based on your ingredients, dietary restrictions, and skill level." />
+    <meta name="keywords" content="recipe generator, meal planner, AI cooking, smart recipes, dietary restrictions, ingredient-based recipes" />
+    <meta name="author" content="SmartChef AI" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="SmartChef AI - Smart Recipe Generator" />
+    <meta property="og:description" content="Get personalized recipe recommendations and meal plans powered by AI" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://smartchef-ai.com" />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SmartChef AI - Smart Recipe Generator" />
+    <meta name="twitter:description" content="Get personalized recipe recommendations and meal plans powered by AI" />
+    <meta name="twitter:image" content="%PUBLIC_URL%/twitter-image.jpg" />
+    
+    <!-- PWA Meta Tags -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Preconnect to improve performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-orange': '#f97316',
+                        'brand-red': '#ef4444',
+                        'brand-green': '#22c55e',
+                        'brand-blue': '#3b82f6'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <title>SmartChef AI - AI-Powered Recipe Generator & Meal Planner</title>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "SmartChef AI",
+        "description": "AI-Powered Smart Recipe Generator & Meal Planner",
+        "url": "https://smartchef-ai.com",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "SmartChef AI"
+        }
+    }
+    </script>
+    
+    <!-- Loading Styles -->
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9fafb;
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .chef-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            animation: bounce 2s infinite;
+        }
+        
+        .loading-text {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .loading-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            text-align: center;
+            max-width: 300px;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-top: 24px;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Hide scrollbar during loading */
+        body.loading {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="loading">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="chef-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/>
+                <line x1="6" y1="17" x2="18" y2="17"/>
+                <line x1="6" y1="13" x2="18" y2="13"/>
+            </svg>
+        </div>
+        <div class="loading-text">SmartChef AI</div>
+        <div class="loading-subtitle">Preparing your personalized cooking experience...</div>
+        <div class="spinner"></div>
+    </div>
+    
+    <!-- React App Root -->
+    <div id="root"></div>
+    
+    <!-- Loading Script -->
+    <script>
+        // Hide loading screen after app loads
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loadingScreen = document.getElementById('loading-screen');
+                const body = document.body;
+                
+                loadingScreen.classList.add('hidden');
+                body.classList.remove('loading');
+                
+                // Remove loading screen from DOM after animation
+                setTimeout(function() {
+                    if (loadingScreen.parentNode) {
+                        loadingScreen.parentNode.removeChild(loadingScreen);
+                    }
+                }, 500);
+            }, 1500); // Minimum loading time for branding
+        });
+        
+        // Service Worker Registration for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(function(registrationError) {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+        
+        // Performance monitoring
+        window.addEventListener('load', function() {
+            if ('performance' in window) {
+                const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+                console.log('Page load time:', loadTime + 'ms');
+                
+                // Send analytics if needed
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'timing_complete', {
+                        'name': 'load',
+                        'value': loadTime
+                    });
+                }
+            }
+        });
+    </script>
+    
+    <!-- Google Analytics (Optional - replace with your tracking ID) -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_TRACKING_ID');
+    </script>
+    -->
+</body>
+</html>

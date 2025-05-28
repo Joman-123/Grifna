@@ -1,0 +1,319 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 11% 98%; /* #F5F7FA */
+  --foreground: 215 15% 13%; /* #1F2937 */
+  --muted: 210 11% 95%; /* #F3F4F6 */
+  --muted-foreground: 215 10% 45%; /* #6B7280 */
+  --popover: 0 0% 100%; /* #FFFFFF */
+  --popover-foreground: 215 15% 13%; /* #1F2937 */
+  --card: 0 0% 100%; /* #FFFFFF */
+  --card-foreground: 215 15% 13%; /* #1F2937 */
+  --border: 210 11% 89%; /* #E5E7EB */
+  --input: 210 11% 89%; /* #E5E7EB */
+  --primary: 24 95% 53%; /* #f97316 - Orange */
+  --primary-foreground: 0 0% 100%; /* #FFFFFF */
+  --secondary: 210 11% 95%; /* #F3F4F6 */
+  --secondary-foreground: 215 15% 13%; /* #1F2937 */
+  --accent: 142 76% 36%; /* #22c55e - Green */
+  --accent-foreground: 0 0% 100%; /* #FFFFFF */
+  --destructive: 0 84% 60%; /* #ef4444 - Red */
+  --destructive-foreground: 0 0% 100%; /* #FFFFFF */
+  --ring: 24 95% 53%; /* #f97316 - Orange */
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 224 71% 4%; /* #0F172A */
+  --foreground: 213 31% 91%; /* #E2E8F0 */
+  --muted: 223 47% 11%; /* #1E293B */
+  --muted-foreground: 215 20% 65%; /* #94A3B8 */
+  --popover: 224 71% 4%; /* #0F172A */
+  --popover-foreground: 213 31% 91%; /* #E2E8F0 */
+  --card: 224 71% 4%; /* #0F172A */
+  --card-foreground: 213 31% 91%; /* #E2E8F0 */
+  --border: 216 34% 17%; /* #334155 */
+  --input: 216 34% 17%; /* #334155 */
+  --primary: 24 95% 53%; /* #f97316 - Orange */
+  --primary-foreground: 0 0% 100%; /* #FFFFFF */
+  --secondary: 223 47% 11%; /* #1E293B */
+  --secondary-foreground: 213 31% 91%; /* #E2E8F0 */
+  --accent: 142 76% 36%; /* #22c55e - Green */
+  --accent-foreground: 0 0% 100%; /* #FFFFFF */
+  --destructive: 0 84% 60%; /* #ef4444 - Red */
+  --destructive-foreground: 0 0% 100%; /* #FFFFFF */
+  --ring: 24 95% 53%; /* #f97316 - Orange */
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  .animate-bounce-slow {
+    animation: bounce 2s infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s infinite;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* Recipe card hover effects */
+.recipe-card {
+  transition: all 0.3s ease;
+}
+
+.recipe-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Button gradient effects */
+.gradient-orange {
+  background: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+}
+
+.gradient-green {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+}
+
+.gradient-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+.gradient-purple {
+  background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+}
+
+/* Loading skeleton animations */
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.2s ease-in-out infinite;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 400% 100%;
+}
+
+/* Toast notification styles */
+.toast {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Modal backdrop blur */
+.modal-backdrop {
+  backdrop-filter: blur(4px);
+}
+
+/* Interactive focus states */
+.focus-ring {
+  @apply focus:ring-2 focus:ring-orange-500 focus:ring-offset-2;
+}
+
+/* Brand color utilities */
+.text-brand-orange {
+  color: #f97316;
+}
+
+.text-brand-green {
+  color: #22c55e;
+}
+
+.text-brand-red {
+  color: #ef4444;
+}
+
+.text-brand-blue {
+  color: #3b82f6;
+}
+
+.bg-brand-orange {
+  background-color: #f97316;
+}
+
+.bg-brand-green {
+  background-color: #22c55e;
+}
+
+.bg-brand-red {
+  background-color: #ef4444;
+}
+
+.bg-brand-blue {
+  background-color: #3b82f6;
+}
+
+.border-brand-orange {
+  border-color: #f97316;
+}
+
+.border-brand-green {
+  border-color: #22c55e;
+}
+
+/* Hover state utilities */
+.hover-lift {
+  transition: transform 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Dark mode specific adjustments */
+.dark .glass {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Recipe difficulty indicators */
+.difficulty-easy {
+  @apply bg-green-100 text-green-800;
+}
+
+.difficulty-medium {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.difficulty-hard {
+  @apply bg-red-100 text-red-800;
+}
+
+/* Cooking timer styles */
+.timer-active {
+  animation: pulse 1s infinite;
+}
+
+/* Progress bar animations */
+.progress-bar {
+  transition: width 0.3s ease-in-out;
+}
+
+/* Navigation active states */
+.nav-active {
+  @apply text-orange-500 bg-orange-50;
+}
+
+/* Mobile responsive utilities */
+@media (max-width: 768px) {
+  .mobile-hide {
+    display: none;
+  }
+  
+  .mobile-full {
+    width: 100%;
+  }
+}
+
+/* Print styles */
+@media print {
+  .print-hide {
+    display: none !important;
+  }
+  
+  .recipe-card {
+    break-inside: avoid;
+  }
+}
+
+/* Accessibility improvements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .recipe-card {
+    border: 2px solid var(--border);
+  }
+  
+  button {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

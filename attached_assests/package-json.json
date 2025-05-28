@@ -1,0 +1,61 @@
+{
+  "name": "smartchef-ai",
+  "version": "1.0.0",
+  "description": "AI-Powered Smart Recipe Generator & Meal Planner",
+  "keywords": ["recipe", "ai", "meal-planning", "cooking", "food", "nutrition"],
+  "author": "SmartChef AI Team",
+  "license": "MIT",
+  "homepage": "https://smartchef-ai.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smartchef/smartchef-ai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/smartchef/smartchef-ai/issues"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "deploy": "npm run build && gh-pages -d build"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "lucide-react": "^0.263.1",
+    "web-vitals": "^3.3.2"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "gh-pages": "^5.0.0",
+    "prettier": "^3.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  }
+}
